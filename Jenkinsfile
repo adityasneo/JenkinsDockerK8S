@@ -6,7 +6,7 @@ pipeline {
 	
 	environment {
 		PROJECT_ID = 'starry-descent-388608'
-                CLUSTER_NAME = 'jenkins'
+                CLUSTER_NAME = 'jenkinsad'
                 LOCATION = 'asia-south1'
                 CREDENTIALS_ID = 'kubernetes'		
 	}
