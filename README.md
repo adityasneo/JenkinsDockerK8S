@@ -8,4 +8,4 @@ The Jenkinsfile is used for CI CD Puropse where it is used for building the dock
 
 After that image got pulled and deployed to GKE
 
-Deployment.yaml is for the creation of pods and servicelb.yaml is used for networking.These both yaml files are deployed in GKE
+Deployment.yaml is for the creation of pods and servicelb.yaml is used for networking in GKE
