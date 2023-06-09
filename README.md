@@ -10,12 +10,19 @@ After that image got pulled and deployed to GKE
 
 Deployment.yaml is for the creation of pods and servicelb.yaml is used for networking in GKE
 
-Apache Tomact
+DockerHub
 
-<img width="951" alt="image" src="https://github.com/adityasneo/JenkinsDockerK8S/assets/128022129/5cea9577-d65d-4469-9a42-cdd15fbb3a38">
+<img width="960" alt="image" src="https://github.com/adityasneo/JenkinsDockerK8S/assets/128022129/28ec042f-1a6f-4438-919c-67bbac6a988d">
 
 GKE
 
 <img width="824" alt="image" src="https://github.com/adityasneo/JenkinsDockerK8S/assets/128022129/51ffaecc-04dd-4c06-80df-574654a251aa">
+
+
+Apache Tomact
+
+<img width="951" alt="image" src="https://github.com/adityasneo/JenkinsDockerK8S/assets/128022129/5cea9577-d65d-4469-9a42-cdd15fbb3a38">
+
+
 
 
