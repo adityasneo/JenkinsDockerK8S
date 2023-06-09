@@ -1,0 +1,402 @@
+Started by user admin
+Obtained Jenkinsfile from git https://github.com/adityasneo/JenkinsDockerK8S.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Jenkins
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/Jenkins/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/adityasneo/JenkinsDockerK8S.git # timeout=10
+Fetching upstream changes from https://github.com/adityasneo/JenkinsDockerK8S.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git fetch --tags --force --progress -- https://github.com/adityasneo/JenkinsDockerK8S.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision a4079253c467035b2dd90bba6b17d4e2b01c51d9 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a4079253c467035b2dd90bba6b17d4e2b01c51d9 # timeout=10
+Commit message: "Update serviceLB.yaml"
+ > git rev-list --no-walk c44b19e850c5d00a32ba60204087a136123f0602 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Scm Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/Jenkins/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/adityasneo/JenkinsDockerK8S.git # timeout=10
+Fetching upstream changes from https://github.com/adityasneo/JenkinsDockerK8S.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git fetch --tags --force --progress -- https://github.com/adityasneo/JenkinsDockerK8S.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision a4079253c467035b2dd90bba6b17d4e2b01c51d9 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a4079253c467035b2dd90bba6b17d4e2b01c51d9 # timeout=10
+Commit message: "Update serviceLB.yaml"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn clean package
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Project Build                                                      [pom]
+[INFO] Test                                                               [war]
+[INFO] 
+[INFO] ---------------------< k8sDemo.devops.gcp:k8sDemo >---------------------
+[INFO] Building Project Build 1.0-AMIT                                    [1/2]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ k8sDemo ---
+[INFO] 
+[INFO] -------------------< k8sDemo.devops.gcp:kubernetes >--------------------
+[INFO] Building Test 1.0-AMIT                                             [2/2]
+[INFO]   from kubernetes/pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ kubernetes ---
+[INFO] Deleting /var/lib/jenkins/workspace/Jenkins/kubernetes/target
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ kubernetes ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Jenkins/kubernetes/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ kubernetes ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/Jenkins/kubernetes/target/classes
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ kubernetes ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Jenkins/kubernetes/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ kubernetes ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.0.0:test (default-test) @ kubernetes ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- war:2.4:war (default-war) @ kubernetes ---
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.converters.collections.TreeMapConverter (file:/var/lib/jenkins/.m2/repository/com/thoughtworks/xstream/xstream/1.4.2/xstream-1.4.2.jar) to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.converters.collections.TreeMapConverter
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[INFO] Packaging webapp
+[INFO] Assembling webapp [kubernetes] in [/var/lib/jenkins/workspace/Jenkins/kubernetes/target/kubernetes-1.0-AMIT]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/var/lib/jenkins/workspace/Jenkins/kubernetes/src/main/webapp]
+[INFO] Webapp assembled in [48 msecs]
+[INFO] Building war: /var/lib/jenkins/workspace/Jenkins/kubernetes/target/kubernetes-1.0-AMIT.war
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Project Build 1.0-AMIT:
+[INFO] 
+[INFO] Project Build ...................................... SUCCESS [  0.567 s]
+[INFO] Test ............................................... SUCCESS [  3.224 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.060 s
+[INFO] Finished at: 2023-06-09T14:26:44Z
+[INFO] ------------------------------------------------------------------------
+[WARNING] 
+[WARNING] Plugin validation issues were detected in 3 plugin(s)
+[WARNING] 
+[WARNING]  * org.apache.maven.plugins:maven-compiler-plugin:3.10.1
+[WARNING]  * org.apache.maven.plugins:maven-war-plugin:2.4
+[WARNING]  * org.apache.maven.plugins:maven-resources-plugin:3.3.0
+[WARNING] 
+[WARNING] For more or less details, use 'maven.plugin.validation' property with one of the values (case insensitive): [BRIEF, DEFAULT, VERBOSE]
+[WARNING] 
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Testing...
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Project Build                                                      [pom]
+[INFO] Test                                                               [war]
+[INFO] 
+[INFO] ---------------------< k8sDemo.devops.gcp:k8sDemo >---------------------
+[INFO] Building Project Build 1.0-AMIT                                    [1/2]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] -------------------< k8sDemo.devops.gcp:kubernetes >--------------------
+[INFO] Building Test 1.0-AMIT                                             [2/2]
+[INFO]   from kubernetes/pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ kubernetes ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Jenkins/kubernetes/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ kubernetes ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ kubernetes ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Jenkins/kubernetes/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ kubernetes ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.0.0:test (default-test) @ kubernetes ---
+[INFO] No tests to run.
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Project Build 1.0-AMIT:
+[INFO] 
+[INFO] Project Build ...................................... SUCCESS [  0.170 s]
+[INFO] Test ............................................... SUCCESS [  1.580 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.045 s
+[INFO] Finished at: 2023-06-09T14:26:50Z
+[INFO] ------------------------------------------------------------------------
+[WARNING] 
+[WARNING] Plugin validation issues were detected in 2 plugin(s)
+[WARNING] 
+[WARNING]  * org.apache.maven.plugins:maven-compiler-plugin:3.10.1
+[WARNING]  * org.apache.maven.plugins:maven-resources-plugin:3.3.0
+[WARNING] 
+[WARNING] For more or less details, use 'maven.plugin.validation' property with one of the values (case insensitive): [BRIEF, DEFAULT, VERBOSE]
+[WARNING] 
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ whoami
+jenkins
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker build -t adityal/jenkins:4 .
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 204B 0.0s done
+#2 DONE 0.0s
+
+#3 [auth] library/tomcat:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/tomcat:8.0.20-jre8
+#4 DONE 0.4s
+
+#5 [internal] load build context
+#5 transferring context: 72.39kB done
+#5 DONE 0.0s
+
+#6 [1/3] FROM docker.io/library/tomcat:8.0.20-jre8@sha256:579e042fb31e6975062276489cbdb3d9c942661a1d489f122d29ce2249e2ed34
+#6 resolve docker.io/library/tomcat:8.0.20-jre8@sha256:579e042fb31e6975062276489cbdb3d9c942661a1d489f122d29ce2249e2ed34 0.1s done
+#6 DONE 0.1s
+
+#7 [2/3] RUN mkdir /usr/local/tomcat/webapps/myapp
+#7 CACHED
+
+#8 [3/3] COPY kubernetes/target/kubernetes-1.0-AMIT.war /usr/local/tomcat/webapps/kubernetes-1.0-AMIT.war
+#8 DONE 0.0s
+
+#9 exporting to image
+#9 exporting layers 0.0s done
+#9 writing image sha256:8762bbc31309822bb1df78797c1ff4291afac619507b2ba36265af7540f8b82a done
+#9 naming to docker.io/adityal/jenkins:4 done
+#9 DONE 0.0s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Push Docker Image
+[Pipeline] withCredentials
+Masking supported pattern matches of $dockerhub
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [dockerhub]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ docker login -u adityal -p ****
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker tag adityal/jenkins:4 adityal/jenkins:4
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker push adityal/jenkins:4
+The push refers to repository [docker.io/adityal/jenkins]
+d00f62d4635c: Preparing
+9a586e40cec0: Preparing
+3d7c7b65abb2: Preparing
+c8252e277764: Preparing
+0d059c7d8519: Preparing
+0e413cd50c1e: Preparing
+3770fb9237e7: Preparing
+e3e44bf3000f: Preparing
+fd97e4a10f39: Preparing
+0e413cd50c1e: Waiting
+3770fb9237e7: Waiting
+e3e44bf3000f: Waiting
+fd97e4a10f39: Waiting
+9a586e40cec0: Layer already exists
+0d059c7d8519: Layer already exists
+3d7c7b65abb2: Layer already exists
+c8252e277764: Layer already exists
+0e413cd50c1e: Layer already exists
+3770fb9237e7: Layer already exists
+fd97e4a10f39: Layer already exists
+e3e44bf3000f: Layer already exists
+d00f62d4635c: Pushed
+4: digest: sha256:b52685d43784b7d6d9221515b6d5b71456a76c32453275f472540172cea4ed68 size: 2210
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to K8s)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Deployment started ...
+[Pipeline] sh
++ ls -ltr
+total 28
+-rw-r--r-- 1 jenkins jenkins  387 Jun  9 14:13 README.md
+-rw-r--r-- 1 jenkins jenkins 1908 Jun  9 14:13 Jenkinsfile
+-rw-r--r-- 1 jenkins jenkins  165 Jun  9 14:13 Dockerfile
+-rw-r--r-- 1 jenkins jenkins 2125 Jun  9 14:13 pom.xml
+-rw-r--r-- 1 jenkins jenkins  622 Jun  9 14:26 serviceLB.yaml
+-rw-r--r-- 1 jenkins jenkins  492 Jun  9 14:26 deployment.yaml
+drwxr-xr-x 4 jenkins jenkins 4096 Jun  9 14:26 kubernetes
+[Pipeline] sh
++ pwd
+/var/lib/jenkins/workspace/Jenkins
+[Pipeline] sh
++ sed -i s/tagversion/4/g serviceLB.yaml
+[Pipeline] sh
++ sed -i s/tagversion/4/g deployment.yaml
+[Pipeline] echo
+Start deployment of serviceLB.yaml
+[Pipeline] step
+Verifying manifests: /var/lib/jenkins/workspace/Jenkins/serviceLB.yaml
+Verifying 1 objects: 
+Verifying: apps/v1/Deployment: myapp-deployment-loadbalancer 
+Verifying: apps/v1/Deployment: myapp-deployment-loadbalancer 
+Verifying: apps/v1/Deployment: myapp-deployment-loadbalancer 
+Verifying: apps/v1/Deployment: myapp-deployment-loadbalancer 
+Verifying: apps/v1/Deployment: myapp-deployment-loadbalancer 
+Successfully verified apps/v1/Deployment: myapp-deployment-loadbalancer
+AvailableReplicas = 1, MinimumReplicas = 1
+
+[Pipeline] echo
+Start deployment of deployment.yaml
+[Pipeline] step
+Verifying manifests: /var/lib/jenkins/workspace/Jenkins/deployment.yaml
+Verifying 1 objects: 
+Verifying: apps/v1/Deployment: myapp 
+Verifying: apps/v1/Deployment: myapp 
+Successfully verified apps/v1/Deployment: myapp
+AvailableReplicas = 1, MinimumReplicas = 1
+
+[Pipeline] echo
+Deployment Finished ...
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
