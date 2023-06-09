@@ -6,7 +6,7 @@ pipeline {
 	
 	environment {
 		PROJECT_ID = 'starry-descent-388608'
-                CLUSTER_NAME = 'jenkinsad'
+                CLUSTER_NAME = 'jenkinsmaven'
                 LOCATION = 'asia-south1'
                 CREDENTIALS_ID = 'kubernetes'		
 	}
@@ -35,7 +35,7 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 			    script {
-				    myimage = docker.build("adityal/devops:${env.BUILD_ID}")
+				    myimage = docker.build("adityal/jenkins:${env.BUILD_ID}")
 			    }
 		    }
 	    }
