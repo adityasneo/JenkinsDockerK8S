@@ -17,7 +17,7 @@ spec:
   spec:
    containers:
    - name: myapp
-     image: adityal/devops:tagversion
+     image: adityal/jenkins:tagversion
      ports:
      - containerPort: 8080
 
